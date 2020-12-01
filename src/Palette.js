@@ -8,7 +8,7 @@ class Palette extends Component {
     super(props);
     this.state = {
       level: 500,
-      format: "hex"
+      format: "hex",
     };
     this.changeLevel = this.changeLevel.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
@@ -17,13 +17,13 @@ class Palette extends Component {
     this.setState({ level });
   }
   changeFormat(value) {
-    this.setState({format: value});
+    this.setState({ format: value });
   }
   render() {
-    const { colors } = this.props.palette;
+    const { colors, paletteName, emoji } = this.props.palette;
     const { level, format } = this.state;
     const colorBoxes = colors[level].map((color) => (
-      <ColorBox background={color[format]} name={color.name} />
+      <ColorBox background={color[format]} name={color.name} key={color.id}/>
     ));
     return (
       <div className="Palette">
@@ -32,9 +32,11 @@ class Palette extends Component {
           changeLevel={this.changeLevel}
           handleChange={this.changeFormat}
         />
-        {/* Navbar goes here */}
         <div className="Palette-colors">{colorBoxes}</div>
-        {/* Footer goes here*/}
+        <footer className="Palette-footer">
+          {paletteName}
+          <span className="emoji">{emoji}</span>
+        </footer>
       </div>
     );
   }
