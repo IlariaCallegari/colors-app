@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Palette from "./Palette";
-import PaletteList from "./paletteList";
+import PaletteList from "./PaletteList";
 import seedColors from "./seedColors";
 import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./colorHelpers";
