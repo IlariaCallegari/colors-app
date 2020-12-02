@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MiniPalette from "./MiniPalette";
-import { Repeat } from "@material-ui/icons";
 
 const styles = {
   root: {
