@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { FullscreenExit } from "@material-ui/icons";
+
 
 const styles = {
   root: {
@@ -48,8 +48,7 @@ const styles = {
 };
 
 function MiniPalette(props) {
-  //grab the classes from props
-  const { classes, paletteName, emoji, colors } = props;
+  const { classes, paletteName, emoji, colors, handleClick } = props;
   const miniColorBoxes = colors.map((color) => {
     return (
       <div
@@ -60,7 +59,7 @@ function MiniPalette(props) {
     );
   });
   return (
-    <div className={classes.root}>
+    <div className={classes.root} onClick={handleClick}>
       <div className={classes.colors}>{miniColorBoxes}</div>
       <h5 className={classes.title}>
         {paletteName}
