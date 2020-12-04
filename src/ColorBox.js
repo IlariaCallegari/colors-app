@@ -24,7 +24,7 @@ class ColorBox extends Component {
     });
   }
   render() {
-    const { background, name, id, paletteId } = this.props;
+    const { background, name, id, paletteId, showLink } = this.props;
     const { copied } = this.state;
 
     return (
@@ -44,10 +44,14 @@ class ColorBox extends Component {
             </div>
             <button className="copy-button">Copy</button>
           </div>
-          {/* stop the parent from propagating anothe event */}
-          <Link to={`/palette/${paletteId}/${id}`} onClick={e => e.stopPropagation()}>
-            <span className="see-more">More</span>
-          </Link>
+          {showLink && (
+            <Link
+              to={`/palette/${paletteId}/${id}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="see-more">More</span>
+            </Link>
+          )}
         </div>
       </CopyToClipboard>
     );
