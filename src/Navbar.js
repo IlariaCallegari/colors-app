@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -20,32 +20,34 @@ class Navbar extends Component {
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
   handleFormatChange(e) {
-    this.setState({ format: e.target.value, open: true});
+    this.setState({ format: e.target.value, open: true });
     this.props.handleChange(e.target.value);
   }
-  closeSnackbar(){
-    this.setState({open: false})
+  closeSnackbar() {
+    this.setState({ open: false });
   }
   render() {
-    const { level, changeLevel } = this.props;
+    const { level, changeLevel, showingAllColors } = this.props;
     const { format, open } = this.state;
     return (
       <nav className="Navbar">
         <div className="logo">
           <Link to="/">reactcolorpicker</Link>
         </div>
-        <div className="slider-container">
-          <span>Level: {level}</span>
-          <div className="slider">
-            <Slider
-              defaultValue={level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={changeLevel}
-            />
+        {showingAllColors && (
+          <div className="slider-container">
+            <span>Level: {level}</span>
+            <div className="slider">
+              <Slider
+                defaultValue={level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={changeLevel}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className="select-container">
           <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value="hex">HEX - #ffffff</MenuItem>
@@ -60,7 +62,11 @@ class Navbar extends Component {
           }}
           open={open}
           autoHideDuration={3000}
-          message={<span id="message-id">Format Changed to {format.toUpperCase()}</span>}
+          message={
+            <span id="message-id">
+              Format Changed to {format.toUpperCase()}
+            </span>
+          }
           ContentProps={{ "aria-describedby": "message-id" }}
           onClose={this.closeSnackbar}
           action={[
