@@ -13,11 +13,11 @@
   height: 50%;
 } */
 
-.ColorBox.go-back {
+/* .ColorBox.go-back {
   background-color: black;
-}
+} */
 
-.copy-button,
+/* .copy-button,
 .back-button {
   width: 100px;
   height: 30px;
@@ -37,7 +37,7 @@
   border: none;
   transition: opacity 0.5s;
   text-decoration: none;
-}
+} */
 
 /* .copy-button {
   opacity: 0;
@@ -58,7 +58,7 @@
   font-size: 12px;
 } */
 
-.light-text {
+/* .light-text {
   color: white;
 }
 
@@ -76,7 +76,7 @@
   height: 30px;
   text-align: center;
   line-height: 30px;
-}
+} */
 
 /* .copy-overlay {
   opacity: 0;
