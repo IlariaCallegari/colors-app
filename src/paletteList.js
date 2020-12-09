@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
-import styles from "./styles/PaletteListStyles"
-
+import { withStyles } from "@material-ui/core/styles";
+import styles from "./styles/PaletteListStyles";
 
 class PaletteList extends Component {
-  goToPalette(id){
+  goToPalette(id) {
     this.props.history.push(`/palette/${id}`);
   }
   render() {
@@ -15,10 +15,16 @@ class PaletteList extends Component {
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1>React Colors</h1>
+            <Link to="/palette/new">Create New Palette</Link>
           </nav>
           <div className={classes.palettes}>
             {palettes.map((palette) => {
-              return <MiniPalette {...palette} handleClick={() => this.goToPalette(palette.id)} />;
+              return (
+                <MiniPalette
+                  {...palette}
+                  handleClick={() => this.goToPalette(palette.id)}
+                />
+              );
             })}
           </div>
         </div>
