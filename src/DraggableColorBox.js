@@ -1,4 +1,3 @@
-import { getThemeProps } from "@material-ui/styles";
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 
@@ -15,10 +14,10 @@ const styles = {
 }
 
 function DraggableColorBox(props){
-    const {classes} = props;
+    const {classes, name, color} = props;
     return (
-        <div style={{backgroundColor: props.color}} className={classes.root}>
-            {props.color}
+        <div style={{backgroundColor: color}} className={classes.root}>
+            {name}
         </div>
     )
 }
