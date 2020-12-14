@@ -91,6 +91,7 @@ class NewPaletteForm extends Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.savePalette = this.savePalette.bind(this);
+    this.removeBox = this.removeBox.bind(this);
   }
   componentDidMount() {
     ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
@@ -103,7 +104,8 @@ class NewPaletteForm extends Component {
     );
     ValidatorForm.addValidationRule("isPaletteNameUnique", (value) =>
       this.props.paletteNames.every(
-        (paletteName) => paletteName.toLowerCase() !== this.state.newPaletteName.toLowerCase()
+        (paletteName) =>
+          paletteName.toLowerCase() !== this.state.newPaletteName.toLowerCase()
       )
     );
   }
@@ -124,6 +126,7 @@ class NewPaletteForm extends Component {
     const newColor = {
       color: this.state.currentColor,
       name: this.state.newColorName,
+      id: this.state.currentColor,
     };
     this.setState({
       colors: [...this.state.colors, newColor],
@@ -145,6 +148,12 @@ class NewPaletteForm extends Component {
     this.props.savePalette(newPalette);
     this.props.history.push("/");
   }
+  removeBox(id) {
+    this.setState({
+      colors: this.state.colors.filter((color) => color.id !== id),
+    });
+  }
+
   render() {
     const { classes } = this.props;
     const {
@@ -184,7 +193,10 @@ class NewPaletteForm extends Component {
                 label="Palette Name"
                 onChange={this.handleChange}
                 validators={["required", "isPaletteNameUnique"]}
-                errorMessages={["Enter a palette name", "Palette name already in use!"]}
+                errorMessages={[
+                  "Enter a palette name",
+                  "Palette name already in use!",
+                ]}
               />
               <Button variant="contained" color="primary" type="submit">
                 Save Palette
@@ -253,7 +265,13 @@ class NewPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
           {colors.map((color) => (
-            <DraggableColorBox color={color.color} name={color.name} />
+            <DraggableColorBox
+              color={color.color}
+              name={color.name}
+              handleClick={this.removeBox}
+              id={color.id}
+              key={color.id}
+            />
           ))}
         </main>
       </div>
