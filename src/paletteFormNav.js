@@ -10,7 +10,6 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import { ThreeDRotationSharp } from "@material-ui/icons";
 
 const drawerWidth = 400;
 const styles = (theme) => ({
