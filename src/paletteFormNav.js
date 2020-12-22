@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { ThreeDRotationSharp } from "@material-ui/icons";
 
 const drawerWidth = 400;
 const styles = (theme) => ({
@@ -45,8 +46,8 @@ const styles = (theme) => ({
     margin: "0 0.5rem",
   },
   link: {
-    textDecoration: "none"
-  }
+    textDecoration: "none",
+  },
 });
 
 class PaletteFormNav extends Component {
@@ -56,9 +57,13 @@ class PaletteFormNav extends Component {
       formShowing: false,
     };
     this.showForm = this.showForm.bind(this);
+    this.hideForm = this.hideForm.bind(this);
   }
   showForm() {
     this.setState({ formShowing: true });
+  }
+  hideForm() {
+    this.setState({ formShowing: false });
   }
   render() {
     const {
@@ -113,7 +118,11 @@ class PaletteFormNav extends Component {
           </div>
         </AppBar>
         {formShowing && (
-          <PaletteMetaForm handleSubmit={handleSubmit} palettes={palettes} />
+          <PaletteMetaForm
+            handleSubmit={handleSubmit}
+            palettes={palettes}
+            hideForm={this.hideForm}
+          />
         )}
       </div>
     );
