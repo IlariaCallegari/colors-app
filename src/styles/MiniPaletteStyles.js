@@ -5,7 +5,6 @@ export default {
       borderRadius: "5px",
       padding: "0.5rem",
       position: "relative",
-      overflow: "hidden",
       "&:hover": {
         cursor: "pointer",
       },
@@ -15,16 +14,15 @@ export default {
       height: "150px",
       width: "100%",
       borderRadius: "5px",
-      overflow: "hidden"
     },
     title: {
       display: "flex",
       justifyContent: "space between",
       alignItems: "center",
-      margin: "0",
+      margin: "0.8rem",
       color: "black",
       paddingTop: "0.5rem",
-      fontSize: "1rem",
+      fontSize: "0.8rem",
       position: "relative",
     },
   
@@ -39,6 +37,5 @@ export default {
         display: "inline-block",
         margin: "0 auto",
         position: "relative",
-        marginBottom: "-4px"
     },
   };
