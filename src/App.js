@@ -7,15 +7,17 @@ import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./colorHelpers";
 import NewPaletteForm from "./NewPaletteForm";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
+    //check if there is any palette save in the local storage
+    const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
     this.state = {
-      palettes: seedColors
-    }
+      palettes: savedPalettes || seedColors,
+    };
     this.savePalette = this.savePalette.bind(this);
     this.findPalette = this.findPalette.bind(this);
+    this.syncLocalStorage = this.syncLocalStorage.bind(this);
   }
   findPalette(id) {
     return this.state.palettes.find((palette) => {
@@ -24,11 +26,19 @@ class App extends Component {
   }
 
   savePalette(newPalette) {
-    this.setState({palettes: [...this.state.palettes, newPalette]})
+    this.setState({ palettes: [...this.state.palettes, newPalette] }, this.syncLocalStorage)
+  }
+
+  syncLocalStorage() {
+    //save palette to local storage
+    window.localStorage.setItem(
+      "palettes",
+      JSON.stringify(this.state.palettes)
+    );
   }
 
   render() {
-    const {palettes} = this.state;
+    const { palettes } = this.state;
     return (
       <Switch>
         <Route
@@ -41,7 +51,13 @@ class App extends Component {
         <Route
           exact
           path="/palette/new"
-          render={(routeProps) => <NewPaletteForm {...routeProps} savePalette={this.savePalette} palettes={this.state.palettes} />}
+          render={(routeProps) => (
+            <NewPaletteForm
+              {...routeProps}
+              savePalette={this.savePalette}
+              palettes={this.state.palettes}
+            />
+          )}
         />
         <Route
           exact
