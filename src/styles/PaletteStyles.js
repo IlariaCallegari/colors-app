@@ -1,3 +1,5 @@
+import sizes from "./Sizes";
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     Palette: {
       height: "100vh",
@@ -15,7 +17,7 @@ export default {
       position: "relative",
       cursor: "pointer",
       textTransform: "uppercase",
-      marginBottom: "-4px",
+    
       backgroundColor: "black",
       "& a": {
         color: "white",
@@ -36,6 +38,18 @@ export default {
         border: "none",
         transition: "opacity 0.5s",
         textDecoration: "none",
+      },
+      [sizes.down("lg")]: {
+        height: "33.333%",
+        width: "25%"
+      },
+      [sizes.down("md")]: {
+        height: "20%",
+        width: "50%"
+      },
+      [sizes.down("xs")]: {
+        height: "10%",
+        width: "100%"
       },
     },
   };
