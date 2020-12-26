@@ -6,11 +6,11 @@ import DeleteIcon from "@material-ui/icons/Delete";
 class MiniPalette extends Component {
   constructor(props) {
     super(props);
-    this.deletePalette = this.deletePalette.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  deletePalette(e){
+  handleClick(e){
     e.stopPropagation();
-    this.props.deletePalette(this.props.id);
+    this.props.openDialog(this.props.id);
   }
 
   render(){
@@ -26,7 +26,7 @@ class MiniPalette extends Component {
     });
     return (
       <div className={classes.root} onClick={handleClick}>
-        <DeleteIcon className={classes.deleteIcon} onClick={this.deletePalette}/>
+        <DeleteIcon className={classes.deleteIcon} onClick={this.handleClick}/>
         <div className={classes.colors}>{miniColorBoxes}</div>
         <h5 className={classes.title}>
           {paletteName}
