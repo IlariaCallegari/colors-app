@@ -1,12 +1,16 @@
-import sizes from "./Sizes"
+import sizes from "./Sizes";
+import bg from "./bg.svg"
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     root: {
-      backgroundColor: "blue",
       display: "flex",
       alignItems: "flex-start",
       justifyContent: "center",
-      minHeight: "100%"
+      height: "100vh",
+      backgroundColor: "#124caa",
+      backgroundImage: `url(${bg})`,
+      /* background by SVGBackgrounds.com */
+      overflow: "scroll",
     },
     container: {
       width: "50%",
@@ -48,5 +52,8 @@ export default {
       [sizes.down("xs")]: {
         gridTemplateColumns: "repeat(1, 100%)",
       },
+    },
+    heading: {
+      fontSize: "2rem"
     }
   };
