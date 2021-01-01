@@ -40,6 +40,7 @@ class PaletteMetaForm extends Component {
 
   savePalette({native}) {
     this.props.handleSubmit(this.state.newPaletteName, native)
+    this.setState({stage: ""});
   }
 
   render() {
