@@ -8,6 +8,7 @@ export default {
     },
     PaletteColors: {
       height: " 90%",
+      lineHeight: 0
     },
     goBack: {
       height: "50%",

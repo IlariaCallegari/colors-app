@@ -7,6 +7,7 @@ export default {
       padding: "0.5rem",
       position: "relative",
       cursor: "pointer",
+      lineHeight: 0,
       "&:hover $deleteIcon": {
         opacity: 1
       },

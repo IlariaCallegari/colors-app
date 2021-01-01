@@ -10,6 +10,7 @@ export default {
       position: "relative",
       cursor: "pointer",
       textTransform: "uppercase",
+      lineHeight: 0,
       "&:hover button": {
         opacity: 1,
       },
