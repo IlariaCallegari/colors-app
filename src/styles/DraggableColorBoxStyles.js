@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 import sizes from "./Sizes";
 
 const styles = {
@@ -30,7 +31,8 @@ const styles = {
     position: "absolute",
     display: "flex",
     justifyContent: "space-between",
-    color: "rgba(0,0,0,0.5)",
+    color: (props) =>
+        chroma(props.background).luminance() <= 0.08 ? "rgba(255, 255, 255, 0.8)" : "rgba(0, 0, 0, 0.6)",
     alignItems: "center",
     padding: "10px",
     width: "100%",

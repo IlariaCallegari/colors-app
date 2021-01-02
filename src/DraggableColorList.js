@@ -8,7 +8,7 @@ const DraggableColorList = SortableContainer(({ colors, removeColor }) => {
       {colors.map((color, i) => (
         <DraggableColorBox
           index={i}
-          color={color.color}
+          background={color.color}
           name={color.name}
           handleClick={removeColor}
           key={color.id}
