@@ -84,7 +84,11 @@ class NewPaletteForm extends Component {
       .flat();
     const randomColor =
       allColors[Math.floor(Math.random() * allColors.length) + 1];
-    this.setState({ colors: [...this.state.colors, randomColor] });
+    if(this.state.colors.every(color => color !== randomColor)){
+      this.setState({ colors: [...this.state.colors, randomColor] });
+    } else {
+      this.addRandomColor();
+    }
   }
 
   render() {
