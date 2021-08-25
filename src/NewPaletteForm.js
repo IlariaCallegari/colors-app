@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PaletteFormNav from "./PaletteFormNav";
+import PaletteFormNav from "./paletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
