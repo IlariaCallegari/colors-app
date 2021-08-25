@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Route, Switch } from "react-router-dom";
 import Palette from "./Palette";
-import PaletteList from "./PaletteList";
+import PaletteList from "./paletteList";
 import SingleColorPalette from "./SingleColorPalette";
 import NewPaletteForm from "./NewPaletteForm";
 import Page from "./Page";
